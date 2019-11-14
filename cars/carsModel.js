@@ -10,7 +10,6 @@ async function insert(car) {
     return db('cars').where({id}).first(); // allows to check for specific dog
 }
 
-async function remove(car) {
-    const [id] = await db('cars').remove(car, 'id');
-    return db('cars').where({id}).first(); // same code, endpoint creates different behavior
+function remove(id){
+    return db('cars').where('id', Number(id)).delete();
 }
