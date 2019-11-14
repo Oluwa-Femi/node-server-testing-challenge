@@ -1,5 +1,5 @@
 const db = require('../data/dbConfig');
-const Dogs = require('./carsModel');
+const Cars = require('./carsModel');
 
 describe('Cars model', () => {
     beforeEach(async () => { // Cleans up table before each test
@@ -27,16 +27,16 @@ describe('Cars model', () => {
 })
 
 describe('Remove method', () => {
-    it('Should delete dog from database', async () => {
-        await Dogs.remove(1);
-        const dogs = await db('dogs');
-        expect(dogs).toHaveLength(0);
+    it('Should delete car from database', async () => {
+        await Cars.remove(1);
+        const cars = await db('cars');
+        expect(cars).toHaveLength(0);
     })
 
-    it('Should only remove dog when ID is provided', async () => {
-        Dogs.insert({ breed: 'Dachshund' });
-        await Dogs.remove();
-        const doggos = await db('dogs')
-        expect(doggos).toHaveLength(1);
+    it('Should only remove a car when ID is provided', async () => {
+        Cars.insert({ type: 'Four wheels' });
+        await Cars.remove();
+        const voooom = await db('cars')
+        expect(voooom).toHaveLength(1);
     })
 }) 
